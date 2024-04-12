@@ -1,2 +1,102 @@
-<p>home works!</p>
-<p-button label="Sign out" (onClick)="logOut()"></p-button>
+<!-- home.component.html -->
+<div class="home-container">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#aboutUsSection">ABOUT</a></li>
+          <li><a href="#">BOOKINGS</a></li>
+          <li><a href="#featured-cars">CARS</a></li>
+          <li><a href="#contact">CONTACTS</a></li>
+          <li><button (click)="logOut()">LOGIN | SIGN UP</button></li>
+        </ul>
+      </nav>
+    </header>
+
+  <section class="hero">
+    <div class="hero-text">
+        <h1>Enjoy the Journey with Style</h1>
+        <p>Your premium car rental awaits. Experience the finest on four wheels.</p>
+        <button class="explore-button">Explore Our Collection</button>
+    </div>
+  </section>
+
+      <section class="about-us" id="aboutUsSection">
+        <div class="about-us-content">
+          <h2>About Us</h2>
+          <div class="about-us-separator"></div> <!-- Separator for visual appeal -->
+          <p>We are a specialized team committed to providing reliable car rental services. One of the advantages of renting a car from us is offering competitive and transparent prices. By providing services such as comprehensive insurance...</p>
+          <a href="#">Read More</a>
+        </div>
+      </section>
+      <section class="featured-cars " id="featured-cars">
+        <h2>Our Featured Cars</h2>
+        <div class="featured-cars-container">
+
+          <div class="car-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG/1200px-1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG" alt="Jeep XD">
+            <div class="car-card-info">
+              <h3 class="car-card-title">Jeep XD</h3>
+              <p class="car-card-details">5 Seats · Gasoline · SUV</p>
+              <p class="car-card-price">Daily rate from $200</p>
+              <button class="book-now-button">Book Now</button>
+            </div>
+          </div>
+
+          <div class="car-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Orange_Enzo_Ferrari_%287191948164%29.jpg/1200px-Orange_Enzo_Ferrari_%287191948164%29.jpg" alt="Ferrari Enzo">
+            <div class="car-card-info">
+              <h3 class="car-card-title">Ferrari Enzo</h3>
+              <p class="car-card-details">2 Seats · Electric · Sedan</p>
+              <p class="car-card-price">Daily rate from $340</p>
+              <button class="book-now-button">Book Now</button>
+            </div>
+          </div>
+
+          <div class="car-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Fiat_Coup%C3%A9_front_20090227.jpg" alt="Fiat Coupé">
+            <div class="car-card-info">
+              <h3 class="car-card-title">Fiat Coupé</h3>
+              <p class="car-card-details">4 Seats · Gasoline · Mini coupe</p>
+              <p class="car-card-price">Daily rate from $167</p>
+              <button class="book-now-button">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+<!-- Contact Us Section -->
+  <section class="contact-us" id="contact">
+    <div class="container">
+        <h2>Get in Touch</h2>
+        <div class="contact-content">
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name*" required>
+                <input type="email" placeholder="Your Email*" required>
+                <textarea placeholder="Your Message"></textarea>
+                <button type="submit" class="send-message-button">Send Message</button>
+            </form>
+            <div class="contact-image">
+                <img src="https://carwow-uk-wp-3.imgix.net/lost-car-keys-lead-main.png" alt="Key Handover">
+            </div>
+        </div>
+    </div>
+  </section>
+
+
+      
+<!-- Footer Section -->
+<footer class="site-footer">
+  <div class="container">
+      <p>Need assistance? Call us at +1-333-444-5555</p>
+      <div class="footer-branding">
+          <p>CARENT</p>
+      </div>
+      <div class="social-links">
+          <!-- Add your social media links here -->
+      </div>
+  </div>
+</footer>
+  
+</div>
+

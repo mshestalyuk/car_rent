@@ -1,0 +1,101 @@
+
+<div class="booking-page">
+    <header>
+        <nav>
+          <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">BOOKINGS</a></li>
+            <li><button (click)="logOut()">LOGIN | SIGN UP</button></li>
+          </ul>
+        </nav>
+      </header>
+    <!-- Booking Form Section -->
+    <section class="booking-section">
+      <div class="booking-form-container">
+        <h1 class="booking-title">Book Your Ride</h1>
+        <form class="booking-form">
+          <!-- Pick-Up Location -->
+          <div class="form-field">
+            <label for="pickupLocation">Pick-Up Location</label>
+            <input type="text" id="pickupLocation" placeholder="Enter a location">
+          </div>
+  
+          <!-- Drop-Off Location -->
+          <div class="form-field">
+            <label for="dropoffLocation">Drop-Off Location</label>
+            <input type="text" id="dropoffLocation" placeholder="Enter a location">
+          </div>
+  
+          <!-- Pick-Up Date -->
+          <div class="form-field">
+            <label for="pickupDate">Pick-Up Date</label>
+            <input type="date" id="pickupDate">
+          </div>
+  
+          <!-- Drop-Off Date -->
+          <div class="form-field">
+            <label for="dropoffDate">Drop-Off Date</label>
+            <input type="date" id="dropoffDate">
+          </div>
+  
+          <!-- Submit Button -->
+          <button type="submit" class="booking-submit">Find Cars</button>
+        </form>
+      </div>
+    </section>
+  
+    <!-- Car Selection Section -->
+    <section class="car-selection">
+      <h2 class="selection-title">Available Cars</h2>
+      <div class="cars-container">
+        <!-- Dynamic list of cars -->
+        <!-- Repeat this div for each car in the list -->
+        <div class="car-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG/1200px-1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG" alt="Car Name">
+          <div class="car-info">
+            <h3 class="car-name">Car Model</h3>
+            <p class="car-price">Starting at $XX/day</p>
+            <button class="car-select-button">Select</button>
+          </div>
+        </div>
+        <div class="car-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG/1200px-1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG" alt="Car Name">
+            <div class="car-info">
+              <h3 class="car-name">Car Model</h3>
+              <p class="car-price">Starting at $XX/day</p>
+              <button class="car-select-button">Select</button>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG/1200px-1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG" alt="Car Name">
+            <div class="car-info">
+              <h3 class="car-name">Car Model</h3>
+              <p class="car-price">Starting at $XX/day</p>
+              <button class="car-select-button">Select</button>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG/1200px-1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG" alt="Car Name">
+            <div class="car-info">
+              <h3 class="car-name">Car Model</h3>
+              <p class="car-price">Starting at $XX/day</p>
+              <button class="car-select-button">Select</button>
+            </div>
+          </div>
+        <!-- End of car card -->
+      </div>
+    </section>
+    
+  </div>
+  <!-- Footer Section -->
+<footer class="site-footer">
+    <div class="container">
+        <p>Need assistance? Call us at +1-333-444-5555</p>
+        <div class="footer-branding">
+            <p>CARENT</p>
+        </div>
+        <div class="social-links">
+            <!-- Add your social media links here -->
+        </div>
+    </div>
+  </footer>

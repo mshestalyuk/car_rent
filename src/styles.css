@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
 
-html,
-body {
-  height: 100%;
+html, body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #FFE4C6;
   margin: 0;
+  padding: 0;
 }

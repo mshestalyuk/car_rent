@@ -1,0 +1,8 @@
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Use full viewport height */
+    padding: 20px; /* Optional: for some padding around the form */
+  }
+  

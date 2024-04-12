@@ -1,0 +1,345 @@
+body {
+  margin: 0;
+  background-color: #DCAE96; /* Or any other desired color */
+}
+
+.home-container header {
+  background-color: #141414; /* Replace with your desired header background color */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed; /* Fixes the header to the top of the screen */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensures the header is above other content */
+  height: 60px; /* Fixed height for the header */
+}
+
+.home-container header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.home-container header nav ul li {
+    padding: 10px 20px; /* Adjust the padding for the navigation items */
+}
+
+.home-container header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.home-container header nav button {
+    background-color: #FE8400; /* This is the orange color for the button */
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+}
+
+/* When hovering over the button, make it slightly darker */
+.home-container header nav button:hover {
+    background-color: #FE8400;
+}
+
+/* Adjust the margin for the button to align it with the links */
+.home-container header nav button {
+    margin: 0;
+    line-height: 20px; /* Adjust the line height to vertically center the text in the button */
+}
+
+/* Reset some default styles */
+ul, p, h1, h2, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section Styles */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8)), url('https://t4.ftcdn.net/jpg/05/82/19/07/360_F_582190763_mDxDmNtsj7Va6hZ6WqpDEWzsYCivnAiI.jpg') no-repeat center center / cover;
+  padding: 150px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 60px;
+  color: #FF8C00;
+  margin-bottom: 25px;
+}
+
+.hero p {
+  font-size: 22px;
+  color: #fff;
+  max-width: 600px;
+  margin: auto;
+}
+
+.explore-button {
+  background-color: #FF8C00;
+  padding: 15px 35px;
+  font-size: 20px;
+  transition: background-color 0.5s ease;
+  margin-top: 50px;
+}
+
+.explore-button:hover {
+  background-color: #cc6e00;
+}
+
+
+/* Keyframes for car "driving" animation */
+@keyframes drive {
+  from { transform: translateX(-10px); }
+  to { transform: translateX(10px); }
+}
+
+
+/* About Us Section Styles */
+.about-us {
+  display: flex;
+  flex-direction: column; /* Aligns the content vertically */
+  align-items: center; /* Centers the items horizontally */
+  text-align: center; /* Text alignment to the center for all text */
+  padding: 50px 0; /* Top and bottom padding */
+  background-color: #FFE4C6; /* Light background color to contrast with the text */
+}
+
+.about-us-content {
+  max-width: 800px; /* Restricts the width for better readability */
+  margin: 0 auto; /* Centers the content block */
+  padding: 20px; /* Padding around the content */
+  background: white; /* White background for the content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px; /* Rounded corners for the content card */
+}
+
+.about-us h2 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333; /* Dark color for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.about-us p {
+  font-size: 18px;
+  color: #666; /* Slightly lighter color for the paragraph */
+  line-height: 1.6; /* Line height for readability */
+}
+
+.about-us a {
+  font-weight: 600;
+  color: #FF8C00; /* Orange color to match your button styles */
+  text-decoration: none; /* Removes the underline */
+  transition: color 0.3s; /* Smooth color transition for hover */
+}
+
+.about-us a:hover {
+  color: #e67600; /* Darker orange on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .about-us-content {
+    padding: 20px;
+  }
+}
+
+/* Adding a little more style with a separator */
+.about-us-separator {
+  height: 2px;
+  background: #FF8C00; /* Orange color to match the buttons */
+  width: 80px; /* Fixed width for the separator */
+  margin: 20px auto; /* Centers the separator */
+}
+
+/* Featured Cars Section Styles */
+.featured-cars {
+  padding: 50px 0; /* Adds padding above and below the section */
+  background-color: #FFF5EB; /* A lighter background to differentiate from the About Us section */
+  text-align: center; /* Centers the text */
+}
+
+.featured-cars h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333; /* Dark text for contrast */
+  margin-bottom: 30px; /* Space below the header */
+}
+
+.featured-cars-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Space between cards */
+  flex-wrap: wrap; /* Allows wrapping for responsiveness */
+}
+
+.car-card {
+  width: 300px; /* Fixed width for each card */
+  background: white; /* White background for the card */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Ensures the content doesn't overflow */
+  margin-bottom: 30px; /* Space below each card */
+  transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.car-card:hover {
+  transform: translateY(-5px); /* Lifts the card on hover */
+}
+
+.car-card img {
+  width: 100%; /* Makes the image fill the card */
+  height: auto;
+  display: block; /* Fixes any potential issues with img default display */
+}
+
+.car-card-info {
+  padding: 15px; /* Padding inside the card */
+}
+
+.car-card-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333; /* Title color */
+  margin-bottom: 10px; /* Space below the title */
+}
+
+.car-card-details {
+  font-size: 14px;
+  color: #666; /* Details color */
+  margin-bottom: 15px; /* Space below the details */
+}
+
+.car-card-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FF8C00; /* Price color to match the theme */
+  margin-bottom: 15px; /* Space below the price */
+}
+
+.book-now-button {
+  background-color: #FF8C00; /* Orange button to match the theme */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px; /* Slightly rounded corners for the button */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.book-now-button:hover {
+  background-color: #e67600; /* Darker orange on hover */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 992px) {
+  .featured-cars-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Contact Us Section Styles */
+.contact-us {
+  padding: 50px 0; /* Top and bottom padding */
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.contact-content {
+  display: flex;
+  gap: 30px;
+}
+
+.contact-form {
+  flex: 1;
+  background: #f9f9f9;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.contact-form button {
+  background-color: #FF8C00;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #cc6e00;
+}
+
+.contact-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.contact-content > * {
+  flex-basis: 48%; /* Ensures the form and image take up equal space */
+}
+
+.contact-us h2 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333; /* Dark color for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+
+/* Footer Styles */
+.site-footer {
+  background-color: #141414; /* Dark background for the footer */
+  color: #FF8C00; /* Accent color for the footer */
+  padding: 15px 0; /* Top and bottom padding */
+  text-align: center;
+  width: 100%; /* Ensure the footer takes up the full width */
+  display: flex;
+
+}
+
+/* Styles for the container inside the footer if it exists */
+.site-footer .container {
+  padding: 0 15px; /* Adjust padding as necessary */
+  margin: 0 auto; /* Center the container */
+  max-width: 100%; /* Allow the container to take full width */
+}
+
+/* Add any additional styles you need for the footer */
+.footer-branding {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* Add media queries if needed */
+@media (max-width: 768px) {
+  .footer-branding {
+    font-size: 20px;
+  }
+}

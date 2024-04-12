@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { authGuard } from './guards/auth.guard';
+import { BookingComponent } from './components/booking/booking.component';
 
 const routes: Routes = [
   {
@@ -11,13 +12,19 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'register',
+    path: 'registration',
     component: RegisterComponent
   },
   {
     path: 'home',
     component: HomeComponent,
     canActivate: [authGuard]
+  },
+  {
+    path: 'booking',
+    component: BookingComponent,
+    canActivate: [authGuard]
+
   },
   {
     path: '', redirectTo: 'home', pathMatch: 'full'
