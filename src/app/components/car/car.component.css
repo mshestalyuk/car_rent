@@ -1,0 +1,136 @@
+/* CSS for the Car List Page */
+
+.car-list-page {
+    min-height: 100vh; /* Ensures the .car-list-page takes up at least the height of the viewport */
+    display: flex;
+    flex-direction: column; /* Stacks children elements vertically */
+  }
+  
+  header {
+    background-color: #141414; /* Header background color */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;
+  }
+  
+  header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  header nav ul li {
+    padding: 10px 20px;
+  }
+  
+  header nav ul li a,
+  header nav button {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  header nav button {
+    background-color: #FE8400;
+    padding: 10px 20px;
+  }
+  
+  header nav button:hover {
+    background-color: #e67600;
+  }
+  
+  .car-display-area {
+    flex-grow: 1; /* Allows the car display area to grow and fill the space */
+    padding: 2rem;
+    padding-top: 60px; /* Adjust the top padding to account for the fixed header */
+  }
+  
+  .car-info-card {
+    margin: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    padding-top: 100px; /* Padding to push content down since header is fixed */
+  }
+  
+  .car-info-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .car-image {
+    max-width: 100%;
+    display: block;
+  }
+  
+  .car-details {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .car-specs {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .spec-label {
+    font-weight: bold;
+  }
+  
+  .select-button {
+    padding: 10px 20px;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .select-button:hover {
+    background-color: #e67600;
+  }
+  
+/* Footer Styles */
+.site-footer {
+    background-color: #141414; /* Dark background for the footer */
+    color: #FF8C00; /* Accent color for the footer */
+    padding: 15px 0; /* Top and bottom padding */
+    text-align: center;
+    position: fixed; /* Fixes footer to the bottom */
+    bottom: 0; /* Align bottom */
+    left: 0; /* Align left */
+    right: 0; /* Align right */
+  }
+  
+  .site-footer .container {
+    padding: 0 15px; /* Adjust padding as necessary */
+    margin: 0 auto; /* Center the container */
+    max-width: 1140px; /* Example max width - adjust as needed */
+    display: flex;
+    justify-content: space-between; /* Space out the footer content */
+  }
+  
+  .footer-branding {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-branding {
+      font-size: 20px;
+    }
+  }
+  

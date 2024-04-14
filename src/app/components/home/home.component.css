@@ -313,33 +313,33 @@ ul, p, h1, h2, button {
 }
 
 
-/* Footer Styles */
-.site-footer {
-  background-color: #141414; /* Dark background for the footer */
-  color: #FF8C00; /* Accent color for the footer */
-  padding: 15px 0; /* Top and bottom padding */
-  text-align: center;
-  width: 100%; /* Ensure the footer takes up the full width */
-  display: flex;
-
-}
-
-/* Styles for the container inside the footer if it exists */
-.site-footer .container {
-  padding: 0 15px; /* Adjust padding as necessary */
-  margin: 0 auto; /* Center the container */
-  max-width: 100%; /* Allow the container to take full width */
-}
-
-/* Add any additional styles you need for the footer */
-.footer-branding {
-  font-size: 24px;
-  margin-top: 10px;
-}
-
-/* Add media queries if needed */
-@media (max-width: 768px) {
-  .footer-branding {
-    font-size: 20px;
+  /* Footer Styles */
+  .site-footer {
+    background-color: #141414; /* Dark background for the footer */
+    color: #FF8C00; /* Accent color for the footer */
+    padding: 15px 0; /* Top and bottom padding */
+    text-align: center;
+    width: 100%; /* Ensure the footer takes up the full width */
+    display: flex;
+  
   }
-}
+  
+  /* Styles for the container inside the footer if it exists */
+  .site-footer .container {
+    padding: 0 15px; /* Adjust padding as necessary */
+    margin: 0 auto; /* Center the container */
+    max-width: 100%; /* Allow the container to take full width */
+  }
+  
+  /* Add any additional styles you need for the footer */
+  .footer-branding {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  /* Add media queries if needed */
+  @media (max-width: 768px) {
+    .footer-branding {
+      font-size: 20px;
+    }
+  }

@@ -1,0 +1,51 @@
+<div class="profile-page">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">BOOKINGS</a></li>
+                <li><a href="#">PROFILE</a></li>
+                <li><button (click)="logOut()">LOG OUT</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="profile-content-container">
+
+        <div class="settings-container">
+            <h2>Settings</h2>
+            <div class="settings-form">
+                <input type="text" placeholder="Username" value="JaneDoe92">
+                <input type="email" placeholder="Email" value="jane.doe@example.com">
+                <input type="text" placeholder="Location" value="New York, USA">
+                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Confirm Password">
+                <button type="submit">Save Changes</button>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-picture">
+                <img src="https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg" alt="User's Profile">
+            </div>
+            <h1>Jane Doe</h1>
+            <p>Member since 2023</p>
+            <p>Location: New York, USA</p>
+        </div>
+        
+        <div class="driver-license-container">
+            <h2>Driver License</h2>
+            <div class="driver-license-form">
+                <input type="text" placeholder="License Number">
+                <input type="date">
+                <input type="date">
+                <button type="submit">Update License</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="booking-history-container">
+        <h2>Booking History</h2>
+        <!-- Booking history items will be listed here -->
+    </div>
+</div>

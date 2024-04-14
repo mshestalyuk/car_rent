@@ -1,0 +1,141 @@
+.profile-page {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    padding-top: 80px;
+}
+
+.profile-page header {
+    background-color: #141414; /* Replace with your desired header background color */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed; /* Fixes the header to the top of the screen */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensures the header is above other content */
+    height: 60px; /* Fixed height for the header */
+  }
+  
+  .profile-page header nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+  }
+  
+  .profile-page header nav ul li {
+      padding: 10px 20px; /* Adjust the padding for the navigation items */
+  }
+  
+  .profile-page header nav ul li a {
+      color: white;
+      text-decoration: none;
+  }
+  
+  .profile-page header nav button {
+      background-color: #FE8400; /* This is the orange color for the button */
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+  }
+  
+  /* When hovering over the button, make it slightly darker */
+  .profile-page header nav button:hover {
+      background-color: #FE8400;
+  }
+  
+  /* Adjust the margin for the button to align it with the links */
+  .profile-page header nav button {
+      margin: 0;
+      line-height: 20px; /* Adjust the line height to vertically center the text in the button */
+  }
+  
+  /* Reset some default styles */
+  ul, p, h1, h2, button {
+      margin: 0;
+      padding: 0;
+  }
+
+.profile-content-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0 40px;
+}
+
+.profile-card, .settings-container, .driver-license-container {
+    background-color: #FFF5EB;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex-basis: calc(33.333% - 40px);
+    margin-bottom: 20px;
+}
+
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.settings-form input,
+.driver-license-form input,
+.settings-form button,
+.driver-license-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.settings-form button,
+.driver-license-form button {
+    background-color: #FE8400;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.settings-form button:hover,
+.driver-license-form button:hover {
+    background-color: #cc6e00;
+}
+
+@media (max-width: 768px) {
+    .profile-content-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-card, .settings-container, .driver-license-container {
+        flex-basis: 100%;
+    }
+}
+.booking-history-container {
+    background-color: #FFF5EB;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    width: calc(100% - 80px); /* Adjust the width as needed, subtracting the total padding */
+    max-width: 1000px; /* Maximum width of the container */
+}
+
+/* You might want to add more specific styles for your booking history items */
+.booking-history-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* If you want to separate items */
+    margin-bottom: 10px;
+}

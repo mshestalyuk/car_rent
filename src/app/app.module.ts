@@ -15,6 +15,8 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
 import { BookingComponent } from './components/booking/booking.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { CarComponent } from './components/car/car.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { BookingComponent } from './components/booking/booking.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    BookingComponent
+    BookingComponent,
+    ProfileComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,
