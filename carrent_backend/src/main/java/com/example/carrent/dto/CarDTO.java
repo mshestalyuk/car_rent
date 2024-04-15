@@ -1,7 +1,7 @@
 package com.example.carrent.dto;
 
 public class CarDTO {
-    private Long id;
+    private Long idCar; // Adjusting field name to match the Car entity
     private String fuel;
     private String transmission;
     private String consumption;
@@ -11,11 +11,11 @@ public class CarDTO {
 
     // Getters and Setters
     public Long getId() {
-        return id;
+        return idCar;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long idCar) {
+        this.idCar = idCar;
     }
 
     public String getFuel() {

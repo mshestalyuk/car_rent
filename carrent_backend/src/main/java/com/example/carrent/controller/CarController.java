@@ -3,6 +3,7 @@ package com.example.carrent.controller;
 import com.example.carrent.dto.CarDTO;
 import com.example.carrent.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,27 +16,32 @@ public class CarController {
     private CarService carService;
 
     @GetMapping("/")
-    public List<CarDTO> getAllCars() {
-        return carService.findAllCars();
+    public ResponseEntity<List<CarDTO>> getAllCars() {
+        List<CarDTO> cars = carService.findAllCars();
+        return ResponseEntity.ok(cars);
     }
 
     @GetMapping("/{id}")
-    public CarDTO getCarById(@PathVariable Long id) {
-        return carService.findCarById(id);
+    public ResponseEntity<CarDTO> getCarById(@PathVariable Long id) {
+        CarDTO car = carService.findCarById(id);
+        return car != null ? ResponseEntity.ok(car) : ResponseEntity.notFound().build();
     }
 
     @PostMapping("/")
-    public CarDTO addCar(@RequestBody CarDTO carDTO) {
-        return carService.addCar(carDTO);
+    public ResponseEntity<CarDTO> addCar(@RequestBody CarDTO carDTO) {
+        CarDTO newCar = carService.addCar(carDTO);
+        return ResponseEntity.ok(newCar);
     }
 
     @PutMapping("/{id}")
-    public CarDTO updateCar(@PathVariable Long id, @RequestBody CarDTO carDTO) {
-        return carService.updateCar(id, carDTO);
+    public ResponseEntity<CarDTO> updateCar(@PathVariable Long id, @RequestBody CarDTO carDTO) {
+        CarDTO updatedCar = carService.updateCar(id, carDTO);
+        return updatedCar != null ? ResponseEntity.ok(updatedCar) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable Long id) {
+    public ResponseEntity<?> deleteCar(@PathVariable Long id) {
         carService.deleteCar(id);
+        return ResponseEntity.ok().build();
     }
 }
