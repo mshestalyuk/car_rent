@@ -2,8 +2,10 @@ package com.example.carrent.service;
 
 import com.example.carrent.dto.UserDTO;
 import com.example.carrent.model.User;
+import com.example.carrent.repository.RoleRepository;
 import com.example.carrent.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,13 +14,17 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService {
-
+    // private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
-
+    private final RoleRepository roleRepository;
+    
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository /*, BCryptPasswordEncoder bCryptPasswordEncoder*/) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        // this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
+
 
     public List<UserDTO> findAllUsers() {
         return userRepository.findAll().stream()
@@ -32,10 +38,23 @@ public class UserService {
     }
 
     public UserDTO createUser(UserDTO userDTO) {
+        if (userDTO.getId_role() == null) {
+            userDTO.setId_role(1L); 
+        }
+        // String encryptedPassword = bCryptPasswordEncoder.encode(userDTO.getPassword());
+        // userDTO.setPassword(encryptedPassword);
+        
         User user = convertToEntity(userDTO);
+        
+        // Before saving, make sure that all the fields are set properly and no constraints are violated.
+        if (user.getRole() == null) {
+            throw new IllegalArgumentException("Role not found for ID: " + userDTO.getId_role());
+        }
+        
         User savedUser = userRepository.save(user);
         return convertToDto(savedUser);
     }
+    
 
     public UserDTO updateUser(Long id, UserDTO userDTO) {
         return userRepository.findById(id)
@@ -57,17 +76,16 @@ public class UserService {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setEmail(user.getEmail());
-        userDTO.setRoleId(user.getRole().getId());
+        userDTO.setPassword(user.getPassword());
+        userDTO.setId_role(user.getRole().getId());
         return userDTO;
     }
 
     private User convertToEntity(UserDTO userDTO) {
         User user = new User();
         user.setEmail(userDTO.getEmail());
-        // Do not set the password directly like this in a real application; it should be encrypted
         user.setPassword(userDTO.getPassword());
-        // Set the role for the user here (you need to fetch or create the role entity)
-        // user.setRole(roleRepository.findById(userDTO.getRoleId()).orElse(null));
+        roleRepository.findById(userDTO.getId_role()).ifPresent(user::setRole);
         return user;
     }
 }
