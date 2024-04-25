@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  database:
+    build:
+      context: ./carrent_database
+      dockerfile: Dockerfile
+    container_name: carrent_database
+    image: carrent_database:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: carrent
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./carrent_backend
+      dockerfile: Dockerfile
+    image: carrent_backend:latest
+    container_name: carrent_backend
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/carrent
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./carrent_frontend
+      dockerfile: Dockerfile
+    image: carrent_frontend:latest
+    container_name: carrent_frontend
+    ports:
+      - "4200:4200"
