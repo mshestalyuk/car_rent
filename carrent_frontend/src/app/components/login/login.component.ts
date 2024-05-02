@@ -28,20 +28,20 @@ export class LoginComponent {
   get password() { return this.loginForm.controls['password']; }
 
   loginUser() {
-    const { email, password } = this.loginForm.value;
-    this.authService.getUserByEmail(email as string).subscribe(
-      response => {
-        if (response.length > 0 && response[0].password === password) {
-          sessionStorage.setItem('email', email as string);
+    if (this.loginForm.valid) {
+      const email = this.loginForm.get('email')!.value as string;
+      const password = this.loginForm.get('password')!.value as string;
+  
+      this.authService.login({ email, password }).subscribe(
+        () => {
           this.router.navigate(['/home']);
-        } else {
-          this.msgService.add({ severity: 'error', summary: 'Error', detail: 'email or password is wrong' });
+          this.msgService.add({ severity: 'success', summary: 'Success', detail: 'Logged in successfully' });
+        },
+        error => {
+          this.msgService.add({ severity: 'error', summary: 'Login Failed', detail: 'Invalid email or password' });
         }
-      },
-      error => {
-        this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
-      }
-
-    )
+      );
+    }
   }
+  
 }

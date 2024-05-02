@@ -5,6 +5,7 @@ import com.example.carrent.model.User;
 import com.example.carrent.repository.RoleRepository;
 import com.example.carrent.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 // import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +15,15 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService {
-    // private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository /*, BCryptPasswordEncoder bCryptPasswordEncoder*/) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        // this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
 
@@ -41,16 +42,14 @@ public class UserService {
         if (userDTO.getId_role() == null) {
             userDTO.setId_role(1L); 
         }
-        // String encryptedPassword = bCryptPasswordEncoder.encode(userDTO.getPassword());
-        // userDTO.setPassword(encryptedPassword);
-        
+        String encryptedPassword = bCryptPasswordEncoder.encode(userDTO.getPassword());
+        userDTO.setPassword(encryptedPassword);
+
         User user = convertToEntity(userDTO);
-        
-        // Before saving, make sure that all the fields are set properly and no constraints are violated.
         if (user.getRole() == null) {
             throw new IllegalArgumentException("Role not found for ID: " + userDTO.getId_role());
         }
-        
+
         User savedUser = userRepository.save(user);
         return convertToDto(savedUser);
     }
@@ -58,15 +57,17 @@ public class UserService {
 
     public UserDTO updateUser(Long id, UserDTO userDTO) {
         return userRepository.findById(id)
-                .map(user -> {
-                    user.setEmail(userDTO.getEmail());
-                    // Do not update the password directly in a real application
-                    user.setPassword(userDTO.getPassword());
-                    userRepository.save(user);
-                    return convertToDto(user);
-                })
-                .orElse(null); 
+            .map(user -> {
+                user.setEmail(userDTO.getEmail());
+                if (userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()) {
+                    user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
+                }
+                userRepository.save(user);
+                return convertToDto(user);
+            })
+            .orElse(null); 
     }
+    
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
