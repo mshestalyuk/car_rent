@@ -3,18 +3,26 @@ package com.example.carrent.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "location")
+@Table(name = "location", schema = "public")
 public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String address;
-    private Long postalcode;
+
+    @Column(nullable = false)
+    private Long postalCode;
+
+    @Column(nullable = false)
     private String city;
+
+    @Column(nullable = false)
     private String county;
 
-    // Getters and Setters
+    // Constructors, getters, and setters
     public Long getId() {
         return id;
     }
@@ -32,11 +40,11 @@ public class Location {
     }
 
     public Long getPostalCode() {
-        return postalcode;
+        return postalCode;
     }
 
-    public void setPostalCode(Long postalcode) {
-        this.postalcode = postalcode;
+    public void setPostalCode(Long postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getCity() {

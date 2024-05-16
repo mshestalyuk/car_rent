@@ -2,11 +2,11 @@ package com.example.carrent.service;
 
 import com.example.carrent.dto.UserDTO;
 import com.example.carrent.model.User;
-import com.example.carrent.repository.RoleRepository;
+import com.example.carrent.model.Role;
 import com.example.carrent.repository.UserRepository;
+import com.example.carrent.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +26,6 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-
     public List<UserDTO> findAllUsers() {
         return userRepository.findAll().stream()
                 .map(this::convertToDto)
@@ -39,21 +38,14 @@ public class UserService {
     }
 
     public UserDTO createUser(UserDTO userDTO) {
-        if (userDTO.getId_role() == null) {
-            userDTO.setId_role(1L); 
-        }
-        String encryptedPassword = bCryptPasswordEncoder.encode(userDTO.getPassword());
-        userDTO.setPassword(encryptedPassword);
-
         User user = convertToEntity(userDTO);
         if (user.getRole() == null) {
-            throw new IllegalArgumentException("Role not found for ID: " + userDTO.getId_role());
+            roleRepository.findById(1L).ifPresent(user::setRole);
         }
-
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); // Encrypt password
         User savedUser = userRepository.save(user);
         return convertToDto(savedUser);
     }
-    
 
     public UserDTO updateUser(Long id, UserDTO userDTO) {
         return userRepository.findById(id)
@@ -62,12 +54,12 @@ public class UserService {
                 if (userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()) {
                     user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
                 }
+                roleRepository.findById(userDTO.getRoleId()).ifPresent(user::setRole); // Update role if it's provided
                 userRepository.save(user);
                 return convertToDto(user);
             })
-            .orElse(null); 
+            .orElse(null);
     }
-    
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
@@ -77,16 +69,18 @@ public class UserService {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setEmail(user.getEmail());
-        userDTO.setPassword(user.getPassword());
-        userDTO.setId_role(user.getRole().getId());
+        userDTO.setPassword(null);
+        userDTO.setRoleId(user.getRole() != null ? user.getRole().getIdRole() : null);
         return userDTO;
     }
 
     private User convertToEntity(UserDTO userDTO) {
         User user = new User();
+        user.setId(userDTO.getId()); 
         user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-        roleRepository.findById(userDTO.getId_role()).ifPresent(user::setRole);
+        user.setPassword(userDTO.getPassword()); 
+        Optional<Role> role = roleRepository.findById(Optional.ofNullable(userDTO.getRoleId()).orElse(1L));
+        role.ifPresent(user::setRole);
         return user;
     }
 }

@@ -2,24 +2,16 @@ package com.example.carrent.dto;
 
 public class UserDTO {
     private Long id;
-    private Long id_role;
     private String email;
     private String password;
-
+    private Long roleId;  // Include roleId
+    // Getters and Setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getId_role() {
-        return id_role;
-    }
-
-    public void setId_role (Long id_role) {
-        this.id_role = id_role;
     }
 
     public String getEmail() {
@@ -36,6 +28,14 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
 }

@@ -1,19 +1,15 @@
 package com.example.carrent.model;
 
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "\"User\"") // Note the quotes around the table name
+@Table(name = "user", schema = "public")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_role")
-    private Role role;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -21,22 +17,17 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    // Getters and setters
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
+    private Role role;
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 
     public String getEmail() {
@@ -53,5 +44,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

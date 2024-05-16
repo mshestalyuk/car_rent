@@ -71,7 +71,7 @@ public class BookingService {
 
     private BookingDTO convertToDto(Booking booking) {
         BookingDTO dto = new BookingDTO();
-        dto.setBookingId(booking.getBooking_id());
+        dto.setBookingId(booking.getBookingId());
         dto.setUserId(booking.getUser().getId());
         dto.setCarId(booking.getCar().getIdCar());
         dto.setPickUpLocId(booking.getPickUpLocation().getId());
@@ -85,7 +85,7 @@ public class BookingService {
     private Booking convertToEntity(BookingDTO dto) {
         Booking booking = new Booking();
         if (dto.getBookingId() != null) {  // Conditionally set the ID only for updates
-            booking.setBooking_id(dto.getBookingId());
+            booking.setBookingId(dto.getBookingId());
         }
         booking.setUser(userRepository.findById(dto.getUserId()).orElse(null));
         booking.setCar(carRepository.findById(dto.getCarId()).orElse(null));

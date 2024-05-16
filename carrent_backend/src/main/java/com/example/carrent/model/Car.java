@@ -3,26 +3,44 @@ package com.example.carrent.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "\"car\"") // Note the quotes around the table name
+@Table(name = "car", schema = "public")
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_car;
+    private Long idCar;
 
+    @Column(nullable = false)
     private String fuel;
+
+    @Column(nullable = false)
     private String transmission;
+
+    @Column(nullable = false)
     private String consumption;
-    private int seats;
+
+    @Column(nullable = false)
+    private Integer seats;
+
+    @Column(nullable = false)
     private String luggageCapacity;
+
+    @Column(nullable = false)
     private String image;
 
+    @Column(nullable = false)
+    private String model;
+
+    @Column(nullable = false)
+    private Double price;
+
     // Getters and setters
-    public Long getIdCar() { 
-        return id_car;
+    public Long getIdCar() {
+        return idCar;
     }
 
-    public void setIdCar(Long id_car) {
-        this.id_car = id_car;
+    public void setIdCar(Long idCar) {
+        this.idCar = idCar;
     }
 
     public String getFuel() {
@@ -49,11 +67,11 @@ public class Car {
         this.consumption = consumption;
     }
 
-    public int getSeats() {
+    public Integer getSeats() {
         return seats;
     }
 
-    public void setSeats(int seats) {
+    public void setSeats(Integer seats) {
         this.seats = seats;
     }
 
@@ -71,5 +89,21 @@ public class Car {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

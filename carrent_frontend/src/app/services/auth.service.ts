@@ -15,7 +15,7 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/authenticate`, userDetails)
       .pipe(
         tap(response => {
-          localStorage.setItem('token', response.jwt);  // Assuming 'jwt' is the key in the response containing the token
+          localStorage.setItem('token', response.jwt); 
         })
       );
   }

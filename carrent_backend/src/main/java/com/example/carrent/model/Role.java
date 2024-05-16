@@ -1,34 +1,32 @@
 package com.example.carrent.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "role")
+@Table(name = "role", schema = "public")
 public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_role;
+    private Long idRole;
 
-    private String rolename;
+    @Column(name = "rolename", nullable = false)
+    private String roleName;
 
     // Getters and setters
-    public Long getId() {
-        return id_role;
+    public Long getIdRole() {
+        return idRole;
     }
 
-    public void setId(Long id) {
-        this.id_role = id;
+    public void setIdRole(Long idRole) {
+        this.idRole = idRole;
     }
 
-    public String getName() {
-        return rolename;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setName(String name) {
-        this.rolename = name;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }
