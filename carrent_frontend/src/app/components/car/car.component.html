@@ -1,38 +1,41 @@
-<!-- car-list.component.html -->
-<div class="car-list-page">
-    <header>
+<!-- car.component.html -->
+<div *ngIf="car; else loading" class="car-list-page">
+  <header>
       <nav class="navbar">
-        <ul class="nav-links">
-          <li><a href="#">HOME</a></li>
-          <li><a href="#">BOOKINGS</a></li>
-          <li><button>LOGOUT</button></li>
-        </ul>
-      </nav>
-    </header>
-  
-    <main class="car-display-area">
-      <!-- Static example of a car card, repeat this block for each car -->
-      <div class="car-info-card">
-        <img src="https://carnet.pl/storage/media/188/conversions/KIA-CEED-legacy.png" alt="KIA Ceed" class="car-image">
-        <div class="car-details">
-          <h2>KIA Ceed</h2>
-          <ul class="car-specs">
-            <li><span class="spec-label">Fuel:</span> Petrol</li>
-            <li><span class="spec-label">Transmission:</span> Manual</li>
-            <li><span class="spec-label">Consumption:</span> 6.9 - 7.3 l/100 km</li>
-            <li><span class="spec-label">Seats:</span> 5</li>
-            <li><span class="spec-label">Luggage Capacity:</span> 381 l</li>
+          <ul class="nav-links">
+              <li><a href="/">HOME</a></li>
+              <li><a href="/bookings">BOOKINGS</a></li>
+              <li><button (click)="logOut()">LOGOUT</button></li>
           </ul>
-        </div>
+      </nav>
+  </header>
+  <main class="car-display-area">
+      <div class="car-info-card">
+          <img [src]="car.image" alt="{{ car.model }}" class="car-image">
+          <div class="car-details">
+              <h2>{{ car.model }}</h2>
+              <ul class="car-specs">
+                  <li><span class="spec-label">Fuel:</span> {{ car.fuel }}</li>
+                  <li><span class="spec-label">Transmission:</span> {{ car.transmission }}</li>
+                  <li><span class="spec-label">Consumption:</span> {{ car.consumption }}</li>
+                  <li><span class="spec-label">Seats:</span> {{ car.seats }}</li>
+                  <li><span class="spec-label">Luggage Capacity:</span> {{ car.luggageCapacity }}</li>
+              </ul>
+              <!-- Book Button -->
+            <button class="select-button" (click)="bookCar(car.id!)">Book This Car</button>
+
+          </div>
       </div>
-      <!-- Repeat the car-info-card div block for each car you want to display -->
-    </main>
-  
-    <footer class="site-footer">
-        <div class="container">
+  </main>
+  <footer class="site-footer">
+      <div class="container">
           <p>Need assistance? Call us at +1-333-444-5555</p>
           <div class="footer-branding">CARENT</div>
-          <!-- Social media links would go here -->
-        </div>
-      </footer>
+      </div>
+  </footer>
 </div>
+<ng-template #loading>
+  <div class="loading">
+      Loading car details...
+  </div>
+</ng-template>

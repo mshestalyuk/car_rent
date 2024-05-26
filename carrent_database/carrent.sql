@@ -94,9 +94,9 @@ CREATE TABLE public.bookings (
 -- Inserting data into 'car'
 INSERT INTO public.car (fuel, transmission, consumption, seats, luggage_capacity, image, model, price)
 VALUES
-('Petrol', 'Automatic', '30mpg', 5, '2 large suitcases', 'image1.jpg', 'Sedan', 30.00),
-('Diesel', 'Manual', '45mpg', 5, '3 large suitcases', 'image2.jpg', 'SUV', 50.00),
-('Electric', 'Automatic', '120mpge', 4, '1 large suitcase', 'image3.jpg', 'Compact', 40.00);
+('Petrol', 'Automatic', '30mpg', 5, '2 large suitcases', 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Sedan', 30.00),
+('Diesel', 'Manual', '45mpg', 5, '3 large suitcases', 'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'SUV', 50.00),
+('Electric', 'Automatic', '120mpge', 4, '1 large suitcase', 'https://images.pexels.com/photos/244206/pexels-photo-244206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Compact', 40.00);
 
 -- Inserting data into 'role'
 INSERT INTO public.role (rolename)

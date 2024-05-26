@@ -96,4 +96,12 @@ public class BookingService {
         booking.setStatus(dto.getStatus());
         return booking;
     }
+
+    public List<BookingDTO> findBookingsByUserId(Long userId) {
+        return bookingRepository.findByUserId(userId).stream()
+                .map(this::convertToDto)  // Correct method name here
+                .collect(Collectors.toList());
+    }
+    
+    
 }

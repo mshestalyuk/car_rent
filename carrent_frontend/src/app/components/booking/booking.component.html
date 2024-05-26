@@ -48,21 +48,13 @@
     <section class="car-selection">
       <h2 class="selection-title">Available Cars</h2>
       <div class="cars-container">
-        <!-- <div class="car-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG/1200px-1993-1995_Jeep_Grand_Cherokee_--_03-30-2012.JPG" alt="Car Name">
-          <div class="car-info">
-            <h3 class="car-name">Car Model</h3>
-            <p class="car-price">Starting at $XX/day</p>
-            <button class="car-select-button">Select</button>
-          </div>
-        </div> -->
           <div class="car-card" *ngFor="let car of cars">
             <img [src]="car.image" alt="{{ car.model }}">
             <div class="car-info">
               <h3 class="car-name">{{ car.model }}</h3>
               <p class="car-price">Starting at ${{ car.price }}/day</p>
-              <button class="car-select-button">Select</button>
-          </div>
+              <button class="car-select-button" [routerLink]="['/car', car.id]">Select</button>
+            </div>
         </div>
         
           

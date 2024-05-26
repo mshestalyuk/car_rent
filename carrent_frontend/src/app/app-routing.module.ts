@@ -35,7 +35,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'booking/car',
+    path: 'car/:id',
     component: CarComponent,
     canActivate: [authGuard]
 

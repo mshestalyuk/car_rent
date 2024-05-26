@@ -54,8 +54,7 @@
   
   .car-display-area {
     flex-grow: 1; /* Allows the car display area to grow and fill the space */
-    padding: 2rem;
-    padding-top: 60px; /* Adjust the top padding to account for the fixed header */
+    padding-bottom: 60px;
   }
   
   .car-info-card {

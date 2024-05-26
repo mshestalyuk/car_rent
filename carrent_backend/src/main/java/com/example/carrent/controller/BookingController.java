@@ -48,4 +48,11 @@ public class BookingController {
         bookingService.deleteBooking(id);
         return ResponseEntity.ok().build();
     }
+
+   @GetMapping("/user/{userId}")
+    public ResponseEntity<List<BookingDTO>> getBookingsByUserId(@PathVariable Long userId) {
+        List<BookingDTO> bookings = bookingService.findBookingsByUserId(userId);
+        return bookings != null && !bookings.isEmpty() ? ResponseEntity.ok(bookings) : ResponseEntity.notFound().build();
+    }
+
 }

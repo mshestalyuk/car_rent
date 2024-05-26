@@ -8,6 +8,8 @@ public class CarDTO {
     private int seats;
     private String luggageCapacity;
     private String image;
+    private String model; // Added model field
+    private Double price; // Added price field with Double to accommodate decimal values
 
     // Getters and Setters
     public Long getId() {
@@ -64,5 +66,21 @@ public class CarDTO {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

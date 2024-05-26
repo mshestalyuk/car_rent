@@ -129,13 +129,30 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px auto;
-    width: calc(100% - 80px); /* Adjust the width as needed, subtracting the total padding */
-    max-width: 1000px; /* Maximum width of the container */
+    width: 100%;
+    overflow-x: auto; /* Ensures responsiveness for smaller screens */
 }
 
-/* You might want to add more specific styles for your booking history items */
-.booking-history-item {
-    padding: 10px;
-    border-bottom: 1px solid #ddd; /* If you want to separate items */
-    margin-bottom: 10px;
+.bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bookings-table th, .bookings-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.bookings-table th {
+    background-color: #FE8400;
+    color: white;
+}
+
+.bookings-table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.bookings-table tr:hover {
+    background-color: #f1f1f1;
 }

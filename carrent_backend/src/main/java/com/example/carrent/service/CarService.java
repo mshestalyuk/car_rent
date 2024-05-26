@@ -61,6 +61,8 @@ public class CarService {
         dto.setSeats(car.getSeats());
         dto.setLuggageCapacity(car.getLuggageCapacity());
         dto.setImage(car.getImage());
+        dto.setPrice(car.getPrice());
+        dto.setModel(car.getModel());
         return dto;
     }
 
@@ -72,6 +74,8 @@ public class CarService {
         car.setSeats(dto.getSeats());
         car.setLuggageCapacity(dto.getLuggageCapacity());
         car.setImage(dto.getImage());
+        car.setPrice(car.getPrice());
+        car.setModel(car.getModel());
         return car;
     }
 }

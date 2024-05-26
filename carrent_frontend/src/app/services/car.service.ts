@@ -1,6 +1,9 @@
+// src/app/services/car.service.ts
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Car } from '../interfaces/car'; // Import the Car model
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,11 @@ export class CarService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCars(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/`);
+  getAllCars(): Observable<Car[]> { // Use the Car model in the return type
+    return this.http.get<Car[]>(`${this.baseUrl}/`);
+  }
+
+  getCarById(id: number): Observable<Car> {
+    return this.http.get<Car>(`${this.baseUrl}/${id}`);
   }
 }
