@@ -48,18 +48,22 @@ public class UserService {
     }
 
     public UserDTO updateUser(Long id, UserDTO userDTO) {
+        if (id == null) {
+            throw new IllegalArgumentException("User ID must not be null");
+        }
         return userRepository.findById(id)
             .map(user -> {
                 user.setEmail(userDTO.getEmail());
                 if (userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()) {
                     user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
                 }
-                roleRepository.findById(userDTO.getRoleId()).ifPresent(user::setRole); // Update role if it's provided
+                roleRepository.findById(userDTO.getRoleId()).ifPresent(user::setRole);
                 userRepository.save(user);
                 return convertToDto(user);
             })
             .orElse(null);
     }
+    
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);

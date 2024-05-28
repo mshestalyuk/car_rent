@@ -41,7 +41,9 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/{id}")
     public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+        System.out.println("Received ID: " + id);  // Log the received ID to console
         UserDTO updatedUser = userService.updateUser(id, userDTO);
+        
         return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
     }
 

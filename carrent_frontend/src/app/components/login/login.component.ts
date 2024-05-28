@@ -34,7 +34,8 @@ export class LoginComponent {
   
       this.authService.login({ email, password }).subscribe(
         () => {
-          this.router.navigate(['/home']);
+          // Navigate to the profile page instead of the home page
+          this.router.navigate(['/profile']); // Update this line to redirect to the profile page
           this.msgService.add({ severity: 'success', summary: 'Success', detail: 'Logged in successfully' });
         },
         error => {
@@ -43,5 +44,6 @@ export class LoginComponent {
       );
     }
   }
+  
   
 }

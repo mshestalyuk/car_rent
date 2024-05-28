@@ -8,7 +8,12 @@
           <li><a href="booking">BOOKINGS</a></li>
           <li><a href="#featured-cars">CARS</a></li>
           <li><a href="#contact">CONTACTS</a></li>
-          <li><button (click)="logOut()">LOGIN | SIGN UP</button></li>
+          <li><a href="profile">PROFILE</a></li>
+          <li>
+            <button (click)="logInOrOut()">
+              {{ isLoggedIn ? 'LOG OUT' : 'LOGIN | SIGN UP' }}
+            </button>
+          </li>        
         </ul>
       </nav>
     </header>
@@ -39,7 +44,7 @@
               <h3 class="car-card-title">Jeep XD</h3>
               <p class="car-card-details">5 Seats · Gasoline · SUV</p>
               <p class="car-card-price">Daily rate from $200</p>
-              <button class="book-now-button">Book Now</button>
+              <a href="booking"><button class="book-now-button">Book Now</button></a>
             </div>
           </div>
 
@@ -49,7 +54,7 @@
               <h3 class="car-card-title">Ferrari Enzo</h3>
               <p class="car-card-details">2 Seats · Electric · Sedan</p>
               <p class="car-card-price">Daily rate from $340</p>
-              <button class="book-now-button">Book Now</button>
+              <a href="booking"><button class="book-now-button">Book Now</button></a>
             </div>
           </div>
 
@@ -59,7 +64,7 @@
               <h3 class="car-card-title">Fiat Coupé</h3>
               <p class="car-card-details">4 Seats · Gasoline · Mini coupe</p>
               <p class="car-card-price">Daily rate from $167</p>
-              <button class="book-now-button">Book Now</button>
+              <a href="booking"><button class="book-now-button">Book Now</button></a>
             </div>
           </div>
         </div>

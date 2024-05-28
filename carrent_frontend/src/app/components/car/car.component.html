@@ -5,7 +5,12 @@
           <ul class="nav-links">
               <li><a href="/">HOME</a></li>
               <li><a href="/bookings">BOOKINGS</a></li>
-              <li><button (click)="logOut()">LOGOUT</button></li>
+              <li><a href="profile">PROFILE</a></li>
+              <li>            
+                <button (click)="logInOrOut()">
+                    {{ isLoggedIn ? 'LOG OUT' : 'LOGIN | SIGN UP' }}
+                </button>
+            </li>
           </ul>
       </nav>
   </header>

@@ -106,9 +106,9 @@ VALUES
 
 -- Inserting data into 'user'
 INSERT INTO public."user" (email, password, role_id) VALUES
-('user1@example.com', '1', 1),
-('user2@example.com', '1', 1),
-('user3@example.com', '1', 1);
+('user1@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1),
+('user2@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1),
+('user3@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1);
 
 -- Inserting data into 'location'
 INSERT INTO public.location (address, postalcode, city, county)
