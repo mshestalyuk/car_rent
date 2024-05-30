@@ -89,4 +89,14 @@ public class LicenseService {
             .map(this::convertToDto)
             .orElse(null);
     }
+
+    public LicenseDTO createLicenseForUser(Long userId, LicenseDTO licenseDTO) {
+       userDetailsRepository.findByUserId(userId)
+       .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+    
+        License license = convertToEntity(licenseDTO);
+        License savedLicense = licenseRepository.save(license);
+        return convertToDto(savedLicense);
+    }
+    
 }

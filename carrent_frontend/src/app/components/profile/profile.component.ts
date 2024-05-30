@@ -104,6 +104,39 @@ export class ProfileComponent implements OnInit {
     }
   }
   
+
+  updateUser(): void {
+    if (this.user && this.user.id) {
+      this.userService.updateUser(this.user.id, this.user).subscribe({
+        next: (updatedUser) => {
+          console.log('User updated successfully:', updatedUser);
+        },
+        error: (error) => {
+          console.error('Failed to update user:', error);
+        }
+      });
+    } else {
+      console.error('Invalid user data. Update cannot proceed.');
+    }
+  }
+  
+  
+  // createLicense(inputData: License): void {
+  //   // Assume LicenseInput is the correct interface for posting new license data
+  //   this.licenseService.createLicense(inputData).subscribe({
+  //     next: (data) => this.license = data,
+  //     error: (error) => console.error('Error creating license:', error)
+  //   });
+  // }
+
+  // createUserDetails(inputData: UserDetails): void {
+  //   // Assume UserDetailsInput is the correct interface for posting new user details
+  //   this.userDetailsService.createUserDetails(inputData).subscribe({
+  //     next: (data) => this.userDetails = data,
+  //     error: (error) => console.error('Error creating user details:', error)
+  //   });
+  // }
+
   logOut(): void {
     this.authService.logOut();
     this.router.navigate(['login']);

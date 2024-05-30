@@ -55,4 +55,10 @@ public class LicenseController {
         LicenseDTO license = licenseService.findLicenseByUserId(userId);
         return license != null ? ResponseEntity.ok(license) : ResponseEntity.notFound().build();
     }
+    @PostMapping("/by-user/{userId}")
+    public ResponseEntity<LicenseDTO> createLicenseForUser(@PathVariable Long userId, @RequestBody LicenseDTO licenseDTO) {
+    LicenseDTO newLicense = licenseService.createLicenseForUser(userId, licenseDTO);
+    return newLicense != null ? ResponseEntity.ok(newLicense) : ResponseEntity.badRequest().build();
+    }
+
 }

@@ -57,12 +57,17 @@ public class UserService {
                 if (userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()) {
                     user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
                 }
-                roleRepository.findById(userDTO.getRoleId()).ifPresent(user::setRole);
+                // Only update the role if a new roleId is provided
+                if (userDTO.getRoleId() != null) {
+                    roleRepository.findById(userDTO.getRoleId())
+                        .ifPresent(user::setRole);
+                }
                 userRepository.save(user);
                 return convertToDto(user);
             })
             .orElse(null);
     }
+    
     
 
     public void deleteUser(Long id) {

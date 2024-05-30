@@ -1,6 +1,10 @@
 package com.example.carrent.repository;
 
 import com.example.carrent.model.License;
+import com.example.carrent.model.User;
+
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,5 +1,6 @@
 package com.example.carrent.controller;
 
+import com.example.carrent.dto.LicenseDTO;
 import com.example.carrent.dto.UserDetailsDTO;
 import com.example.carrent.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +23,15 @@ public class UserDetailsController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/{userId}")
+    public ResponseEntity<UserDetailsDTO> createUserDetails(@PathVariable Long userId, @RequestBody UserDetailsDTO userDetailsDTO) {
+        try {
+            UserDetailsDTO newUserDetails = userDetailsService.createUserDetails(userId, userDetailsDTO);
+            return ResponseEntity.ok(newUserDetails);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null); // Adjust error handling as needed
+        }
+    }
+
 }

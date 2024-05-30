@@ -6,6 +6,7 @@ public class UserDetailsDTO {
     private String surname;
     private String location;
     private String image;
+    private Long iddriver;
 
     // Constructors, Getters, and Setters
     public Long getUserId() {
@@ -46,5 +47,13 @@ public class UserDetailsDTO {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Long getDrivenID() {
+        return iddriver;
+    }
+
+    public void setDrivenID(long iddriver) {
+        this.iddriver = iddriver;
     }
 }
