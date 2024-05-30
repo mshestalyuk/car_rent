@@ -1,9 +1,12 @@
 // src/app/components/profile/profile.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookingService } from '../../services/booking.service';
 import { Booking } from '../../interfaces/booking';
 import { AuthService } from 'src/app/services/auth.service';
+import { DriverLicenseService } from 'src/app/services/driverlicense.service';
+import { License } from '../../interfaces/license';  // Import the interface
 
 @Component({
   selector: 'app-profile',
@@ -11,20 +14,26 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+updateLicense() {
+throw new Error('Method not implemented.');
+}
   bookings: Booking[] = [];
+  license: License | undefined;  // Use the License interface
 
   constructor(
     private router: Router,
     private bookingService: BookingService,
-    private authService: AuthService
+    private authService: AuthService,
+    private licenseService: DriverLicenseService
   ) {}
 
   ngOnInit(): void {
     this.loadUserBookings();
+    this.loadUserLicense();
   }
 
   loadUserBookings(): void {
-    const userId = this.authService.getUserIdFromToken(); // Now using AuthService to get the user ID
+    const userId = this.authService.getUserIdFromToken();
     if (userId > 0) {
       this.bookingService.getBookingsByUserId(userId).subscribe({
         next: (data) => {
@@ -39,8 +48,24 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  loadUserLicense(): void {
+    const userId = this.authService.getUserIdFromToken();
+    if (userId > 0) {
+      this.licenseService.getLicenseByUserId(userId).subscribe({
+        next: (data) => {
+          this.license = data;  // Store the whole license object
+        },
+        error: (error) => {
+          console.error('Failed to fetch license', error);
+        }
+      });
+    } else {
+      console.error('No valid user ID found for license');
+    }
+  }
+
   logOut(): void {
-    this.authService.logOut();  // Assume logout method clears session and token
+    this.authService.logOut();
     this.router.navigate(['login']);
   }
 }

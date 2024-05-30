@@ -1,6 +1,7 @@
 package com.example.carrent.controller;
 
 import com.example.carrent.dto.LicenseDTO;
+import com.example.carrent.model.License;
 import com.example.carrent.service.LicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,5 +48,11 @@ public class LicenseController {
     public ResponseEntity<?> deleteLicense(@PathVariable Long id) {
         licenseService.deleteLicense(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/by-user/{userId}")
+    public ResponseEntity<LicenseDTO> getLicenseByUserId(@PathVariable Long userId) {
+        LicenseDTO license = licenseService.findLicenseByUserId(userId);
+        return license != null ? ResponseEntity.ok(license) : ResponseEntity.notFound().build();
     }
 }

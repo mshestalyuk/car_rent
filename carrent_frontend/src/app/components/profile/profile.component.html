@@ -33,15 +33,23 @@
             <p>Location: New York, USA</p>
         </div>
         
-        <div class="driver-license-container">
+        <div class="driver-license-container" *ngIf="license">
             <h2>Driver License</h2>
             <div class="driver-license-form">
-                <input type="text" placeholder="License Number">
-                <input type="date">
-                <input type="date">
-                <button type="submit">Update License</button>
+                <input type="text" placeholder="License Number" [value]="license.licenseNumber" disabled>
+                <input type="date" placeholder="Start Date" [value]="license.startDate | date:'yyyy-MM-dd'" disabled>
+                <input type="date" placeholder="Expiration Date" [value]="license.expirationDate | date:'yyyy-MM-dd'" disabled>
+        
+                <!-- Image display -->
+                <div class="license-image">
+                    <img [src]="license.image" alt="Driver License Image">
+                </div>
+        
+                <button type="button" (click)="updateLicense()">Update License</button>
             </div>
         </div>
+        
+        
     </div>
 
     <div class="booking-history-container">

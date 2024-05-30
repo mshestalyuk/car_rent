@@ -2,7 +2,10 @@ package com.example.carrent.service;
 
 import com.example.carrent.dto.LicenseDTO;
 import com.example.carrent.model.License;
+import com.example.carrent.model.UserDetails;
 import com.example.carrent.repository.LicenseRepository;
+import com.example.carrent.repository.UserDetailsRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +16,13 @@ import java.util.stream.Collectors;
 public class LicenseService {
 
     private final LicenseRepository licenseRepository;
+    private UserDetailsRepository userDetailsRepository;
+
 
     @Autowired
-    public LicenseService(LicenseRepository licenseRepository) {
+    public LicenseService(LicenseRepository licenseRepository, UserDetailsRepository userDetailsRepository) {
         this.licenseRepository = licenseRepository;
+        this.userDetailsRepository = userDetailsRepository;
     }
 
     public List<LicenseDTO> findAllLicenses() {
@@ -55,12 +61,32 @@ public class LicenseService {
     }
 
     private LicenseDTO convertToDto(License license) {
-        // Conversion logic
-        return new LicenseDTO();
+        LicenseDTO licenseDTO = new LicenseDTO();
+        licenseDTO.setId(license.getId());
+        licenseDTO.setLicenseNumber(license.getLicenseNumber());
+        licenseDTO.setStartDate(license.getStartDate());
+        licenseDTO.setExpirationDate(license.getExpirationDate());
+        licenseDTO.setImage(license.getImage());
+        return licenseDTO;
     }
+    
 
     private License convertToEntity(LicenseDTO licenseDTO) {
-        // Conversion logic
-        return new License();
+        License license = new License();
+        license.setId(licenseDTO.getId());  // Typically not set for new entities
+        license.setLicenseNumber(licenseDTO.getLicenseNumber());
+        license.setStartDate(licenseDTO.getStartDate());
+        license.setExpirationDate(licenseDTO.getExpirationDate());
+        license.setImage(licenseDTO.getImage());
+        return license;
+    }
+    
+
+
+    public LicenseDTO findLicenseByUserId(Long userId) {
+        return userDetailsRepository.findByUserId(userId)
+            .map(UserDetails::getDriverLicense)
+            .map(this::convertToDto)
+            .orElse(null);
     }
 }

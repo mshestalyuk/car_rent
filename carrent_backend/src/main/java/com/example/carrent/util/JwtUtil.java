@@ -8,6 +8,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.example.carrent.model.User;
+import com.example.carrent.service.security.CustomUserDetails;
+
 import javax.crypto.SecretKey;
 import java.util.Date;
 
@@ -22,13 +25,17 @@ public class JwtUtil {
 
     public String generateToken(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        User user = ((CustomUserDetails) userDetails).getUser(); // Assuming you have extended UserDetails to include the User entity.
+    
         return Jwts.builder()
             .setSubject(userDetails.getUsername())
+            .claim("userId", user.getId()) // Include user ID in the claims.
             .setIssuedAt(new Date())
             .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 hours validity
             .signWith(secretKey)
             .compact();
     }
+    
 
     public boolean validateToken(String token, String username) {
         final String usernameFromToken = extractUsername(token);

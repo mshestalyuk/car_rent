@@ -156,3 +156,10 @@
 .bookings-table tr:hover {
     background-color: #f1f1f1;
 }
+
+.driver-license-form .license-image img {
+    width: 100%; /* Set the width as required, or use max-width for responsiveness */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Optional: Rounds the corners of the image */
+    margin-top: 10px; /* Space above the image */
+}

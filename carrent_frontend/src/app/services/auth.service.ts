@@ -50,7 +50,7 @@ export class AuthService {
     if (token) {
       try {
         const decoded: any = jwtDecode(token);
-        return +decoded.userId;  // Change 'sub' to the correct claim key
+        return +decoded.userId;  // Ensure you are now accessing 'userId' that we just added in backend.
       } catch (Error) {
         console.error('Failed to decode token:', Error);
         return 0;
@@ -58,6 +58,7 @@ export class AuthService {
     }
     return 0; // Return a default or error value if no token or incorrect claim
   }
+
   
   logOut(): void {
     localStorage.removeItem('token');  // Removing the JWT token from local storage

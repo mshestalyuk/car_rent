@@ -120,9 +120,9 @@ VALUES
 -- Inserting data into 'driver_license'
 INSERT INTO public.driver_license (license_number, start_date, expiration_date, image)
 VALUES
-(1234567890, '2020-01-01', '2030-01-01', 'license1.jpg'),
-(2345678901, '2021-01-01', '2031-01-01', 'license2.jpg'),
-(3456789012, '2022-01-01', '2032-01-01', 'license3.jpg');
+(1234567890, '2020-01-01', '2030-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
+(2345678901, '2021-01-01', '2031-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
+(3456789012, '2022-01-01', '2032-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg');
 
 
 -- Inserting data into 'user_details'
