@@ -68,6 +68,7 @@ CREATE TABLE public.user_details (
     name text NOT NULL,
     surname text NOT NULL,
     location text NOT NULL,
+    image text,
     PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES public."user" (id) ON DELETE CASCADE,
     FOREIGN KEY (id_driver) REFERENCES public.driver_license (id) ON DELETE SET NULL
@@ -126,11 +127,11 @@ VALUES
 
 
 -- Inserting data into 'user_details'
-INSERT INTO public.user_details (user_id, id_driver, name, surname, location)
+INSERT INTO public.user_details (user_id, id_driver, name, surname, location, image)
 VALUES
-(1, 1, 'John', 'Doe', '123 Street Ave'),
-(2, 2, 'Jane', 'Doe', '456 Boulevard St'),
-(3, 3, 'Jim', 'Beam', '789 Road Ln');
+(1, 1, 'John', 'Doe', '123 Street Ave', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
+(2, 2, 'Jane', 'Doe', '456 Boulevard St', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
+(3, 3, 'Jim', 'Beam', '789 Road Ln', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg');
 
 -- Inserting data into 'bookings'
 INSERT INTO public.bookings (user_id, car_id, pick_up_loc_id, drop_off_loc_id, pick_up_date, pick_off_date, status, drop_off_date)

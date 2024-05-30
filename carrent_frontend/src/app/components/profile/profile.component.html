@@ -12,25 +12,22 @@
 
     <div class="profile-content-container">
 
-        <div class="settings-container">
+        <div class="settings-container" *ngIf="user">
             <h2>Settings</h2>
             <div class="settings-form">
-                <input type="text" placeholder="Username" value="JaneDoe92">
-                <input type="email" placeholder="Email" value="jane.doe@example.com">
-                <input type="text" placeholder="Location" value="New York, USA">
+                <input type="email" placeholder="Email" value="{{ user.email }}">
                 <input type="password" placeholder="Password">
                 <input type="password" placeholder="Confirm Password">
                 <button type="submit">Save Changes</button>
             </div>
         </div>
 
-        <div class="profile-card">
+        <div class="profile-card" *ngIf="userDetails">
             <div class="profile-picture">
-                <img src="https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg" alt="User's Profile">
+                <img [src]="userDetails.image" alt="User's Profile">
             </div>
-            <h1>Jane Doe</h1>
-            <p>Member since 2023</p>
-            <p>Location: New York, USA</p>
+            <h1>{{ userDetails.name }} {{ userDetails.surname }}</h1>
+            <p>Location: {{ userDetails.location }}</p>
         </div>
         
         <div class="driver-license-container" *ngIf="license">
@@ -44,8 +41,6 @@
                 <div class="license-image">
                     <img [src]="license.image" alt="Driver License Image">
                 </div>
-        
-                <button type="button" (click)="updateLicense()">Update License</button>
             </div>
         </div>
         
