@@ -9,6 +9,7 @@ public class BookingDTO {
     private Long pickUpLocId;
     private Long dropOffLocId;
     private Date pickUpDate;
+    private Date pickOffDate;
     private Date dropOffDate;
     private String status;
 
@@ -61,6 +62,14 @@ public class BookingDTO {
         this.pickUpDate = pickUpDate;
     }
 
+
+    public Date getPickOffDate() {
+        return pickOffDate;
+    }
+
+    public void setPickOffDate(Date pickOffDate) {
+        this.pickOffDate = pickOffDate;
+    }
     public Date getDropOffDate() {
         return dropOffDate;
     }

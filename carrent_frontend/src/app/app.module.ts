@@ -17,6 +17,7 @@ import { MessageService } from 'primeng/api';
 import { BookingComponent } from './components/booking/booking.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CarComponent } from './components/car/car.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CarComponent } from './components/car/car.component';
     HomeComponent,
     BookingComponent,
     ProfileComponent,
-    CarComponent
+    CarComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

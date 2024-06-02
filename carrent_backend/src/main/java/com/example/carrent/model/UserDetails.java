@@ -16,18 +16,19 @@ public class UserDetails {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_driver", nullable = true) 
+    @JoinColumn(name = "id_driver") 
     private License driverLicense;
 
-    @Column(nullable = false)
+    @Column()
     private String name;
 
-    @Column(nullable = false)
+    @Column()
     private String surname;
 
-    @Column(nullable = false)
+    @Column()
     private String location;
 
+    @Column()
     private String image;
 
 

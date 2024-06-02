@@ -6,7 +6,7 @@ public class UserDetailsDTO {
     private String surname;
     private String location;
     private String image;
-    private Long iddriver;
+    private Long driverLicenseId; // Corrected field name
 
     // Constructors, Getters, and Setters
     public Long getUserId() {
@@ -49,11 +49,11 @@ public class UserDetailsDTO {
         this.image = image;
     }
 
-    public Long getDrivenID() {
-        return iddriver;
+    public Long getDriverLicenseId() {
+        return driverLicenseId;
     }
 
-    public void setDrivenID(long iddriver) {
-        this.iddriver = iddriver;
+    public void setDriverLicenseId(Long driverLicenseId) {
+        this.driverLicenseId = driverLicenseId;
     }
 }

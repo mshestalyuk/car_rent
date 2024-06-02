@@ -35,15 +35,14 @@ public class UserDetailsService {
 
     
     public UserDetailsDTO createUserDetails(Long userId, UserDetailsDTO userDetailsDTO) {
-        User user = userRepository.findById(userId)
-            .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
-        
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+    
         License license = null;
-        if (userDetailsDTO.getDrivenID() != null) {
-            license = licenseRepository.findById(userDetailsDTO.getDrivenID())
-                      .orElseThrow(() -> new RuntimeException("License not found with id: " + userDetailsDTO.getDrivenID()));
+        if (userDetailsDTO.getDriverLicenseId() != null) {
+            license = licenseRepository.findById(userDetailsDTO.getDriverLicenseId())
+                      .orElseThrow(() -> new RuntimeException("License not found with id: " + userDetailsDTO.getDriverLicenseId()));
         }
-        
+    
         UserDetails userDetails = new UserDetails();
         userDetails.setUser(user);
         userDetails.setDriverLicense(license); // Can be null if not provided
@@ -51,15 +50,11 @@ public class UserDetailsService {
         userDetails.setSurname(userDetailsDTO.getSurname());
         userDetails.setLocation(userDetailsDTO.getLocation());
         userDetails.setImage(userDetailsDTO.getImage());
-        UserDetails savedUserDetails = userDetailsRepository.save(userDetails);
     
-        // Correctly set the driver license ID
-        UserDetailsDTO resultDTO = convertToDTO(savedUserDetails);
-        if (license != null) {
-            resultDTO.setDrivenID(license.getId()); // Assuming there is a getId() method in License
-        }
-        return resultDTO;
+        UserDetails savedUserDetails = userDetailsRepository.save(userDetails);
+        return convertToDTO(savedUserDetails);
     }
+    
     
     
 
@@ -73,7 +68,7 @@ public class UserDetailsService {
     
         // Set the driver license ID if available
         if (userDetails.getDriverLicense() != null) {
-            dto.setDrivenID(userDetails.getDriverLicense().getId());
+            dto.setDriverLicenseId(userDetails.getDriverLicense().getId());
         }
         return dto;
     }

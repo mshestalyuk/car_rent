@@ -66,6 +66,7 @@ public class BookingService {
         booking.setDropOffLocation(locationRepository.findById(dto.getDropOffLocId()).orElse(null));
         booking.setPickUpDate(dto.getPickUpDate());
         booking.setDropOffDate(dto.getDropOffDate());
+        booking.setPickOffDate(dto.getPickOffDate());
         booking.setStatus(dto.getStatus());
     }
 
@@ -78,6 +79,7 @@ public class BookingService {
         dto.setDropOffLocId(booking.getDropOffLocation().getId());
         dto.setPickUpDate(booking.getPickUpDate());
         dto.setDropOffDate(booking.getDropOffDate());
+        dto.setPickOffDate(booking.getPickOffDate());
         dto.setStatus(booking.getStatus());
         return dto;
     }
@@ -93,6 +95,7 @@ public class BookingService {
         booking.setDropOffLocation(locationRepository.findById(dto.getDropOffLocId()).orElse(null));
         booking.setPickUpDate(dto.getPickUpDate());
         booking.setDropOffDate(dto.getDropOffDate());
+        booking.setPickOffDate(dto.getPickOffDate());
         booking.setStatus(dto.getStatus());
         return booking;
     }

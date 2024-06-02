@@ -45,7 +45,7 @@ CREATE TABLE public."user" (
 CREATE TABLE public.location (
     id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     address text NOT NULL,
-    postalcode bigint NOT NULL,
+    postal_code bigint NOT NULL,
     city text NOT NULL,
     county text NOT NULL
 );
@@ -53,10 +53,10 @@ CREATE TABLE public.location (
 -- Create table for driver licenses
 CREATE TABLE public.driver_license (
     id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    license_number bigint NOT NULL,
-    start_date date NOT NULL,
-    expiration_date date NOT NULL,
-    image text NOT NULL
+    license_number bigint,
+    start_date date,
+    expiration_date date,
+    image text
 );
 
 
@@ -65,9 +65,9 @@ CREATE TABLE public.driver_license (
 CREATE TABLE public.user_details (
     user_id bigint NOT NULL,
     id_driver bigint NOT NULL,
-    name text NOT NULL,
-    surname text NOT NULL,
-    location text NOT NULL,
+    name text,
+    surname text,
+    location text,
     image text,
     PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES public."user" (id) ON DELETE CASCADE,
@@ -112,7 +112,7 @@ INSERT INTO public."user" (email, password, role_id) VALUES
 ('user3@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1);
 
 -- Inserting data into 'location'
-INSERT INTO public.location (address, postalcode, city, county)
+INSERT INTO public.location (address, postal_code, city, county)
 VALUES
 ('123 Street Ave', 10001, 'New York', 'NY'),
 ('456 Boulevard St', 20002, 'Washington', 'DC'),

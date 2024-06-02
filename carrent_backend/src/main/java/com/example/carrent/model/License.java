@@ -10,16 +10,16 @@ public class License {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column()
     private Long licenseNumber;
 
-    @Column(nullable = false)
+    @Column()
     private java.util.Date startDate;
 
-    @Column(nullable = false)
+    @Column()
     private java.util.Date expirationDate;
 
-    @Column(nullable = false)
+    @Column()
     private String image;
 
     // Constructors, getters, and setters
