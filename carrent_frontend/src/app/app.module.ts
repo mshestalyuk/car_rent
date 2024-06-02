@@ -18,7 +18,12 @@ import { BookingComponent } from './components/booking/booking.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CarComponent } from './components/car/car.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
-
+import { BookingDialogComponent } from './components/booking-dialog/booking-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,8 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
     BookingComponent,
     ProfileComponent,
     CarComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    BookingDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +46,14 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
     HttpClientModule,
     ToastModule,
     BrowserAnimationsModule,
-    FormsModule
-  ],
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
+    ],
   providers: [MessageService],
   bootstrap: [AppComponent]
 })

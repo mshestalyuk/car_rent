@@ -96,7 +96,7 @@ public class BookingService {
         booking.setPickUpDate(dto.getPickUpDate());
         booking.setDropOffDate(dto.getDropOffDate());
         booking.setPickOffDate(dto.getPickOffDate());
-        booking.setStatus(dto.getStatus());
+        booking.setStatus("pending");
         return booking;
     }
 

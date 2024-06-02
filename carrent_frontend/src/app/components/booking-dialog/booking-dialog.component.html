@@ -1,0 +1,36 @@
+<!-- booking-dialog.component.html -->
+<h1 mat-dialog-title>Book This Car</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Pick-Up Location ID</mat-label>
+      <input matInput [(ngModel)]="data.pickUpLocId" name="pickUpLocId">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Drop-Off Location ID</mat-label>
+      <input matInput [(ngModel)]="data.dropOffLocId" name="dropOffLocId">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Pick-Up Date</mat-label>
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="data.pickUpDate" name="pickUpDate">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Pick-Off Date</mat-label>
+      <input matInput [matDatepicker]="picker3" [(ngModel)]="data.pickOffDate" name="pickOffDate">
+      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+      <mat-datepicker #picker3></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Drop-Off Date</mat-label>
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="data.dropOffDate" name="dropOffDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="submitBooking()" cdkFocusInitial>Book</button>
+</div>

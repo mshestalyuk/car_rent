@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router'; // Import Router
 import { CarService } from '../../services/car.service';
 import { Car } from '../../interfaces/car';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { BookingDialogComponent } from '../booking-dialog/booking-dialog.component';
 
 @Component({
   selector: 'app-car',
@@ -17,6 +19,7 @@ export class CarComponent implements OnInit {
     private route: ActivatedRoute,
     private carService: CarService,
     private router: Router,
+    private dialog: MatDialog,
     private authService: AuthService
   ) {
     this.isLoggedIn = this.authService.isLoggedIn();
@@ -24,7 +27,11 @@ export class CarComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const id = +params['id'];
+      const id = +params['id']; // Make sure 'id' corresponds to the route configuration
+      if (!id) {
+        console.error('Invalid or missing car ID');
+        return;
+      }
       this.carService.getCarById(id).subscribe(car => {
         this.car = car;
       }, error => {
@@ -32,14 +39,24 @@ export class CarComponent implements OnInit {
       });
     });
   }
+  
 
   bookCar(carId: number): void {
-    if (!carId) {
-      alert('Error: No car selected.');
-      return;
-    }
-    alert(`Booking process started for car ID: ${carId}`);
+    const userId = this.authService.getUserIdFromToken(); // Get user ID from token
+    const dialogRef = this.dialog.open(BookingDialogComponent, {
+      width: '400px',
+      data: { carId: carId, userId: userId }, // Pass both carId and userId
+      panelClass: 'custom-dialog-container'
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Booking confirmed', result);
+      }
+    });
   }
+  
+  
 
   logInOrOut() {
     if (this.isLoggedIn) {
