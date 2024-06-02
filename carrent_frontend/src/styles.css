@@ -1,10 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
-
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 html, body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #FFE4C6;
   margin: 0;
   padding: 0;
   width: 100%;
+}
+
+.cdk-overlay-container {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
 }

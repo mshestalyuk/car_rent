@@ -53,53 +53,63 @@
   }
   
   .car-display-area {
-    flex-grow: 1; /* Allows the car display area to grow and fill the space */
-    padding-bottom: 60px;
+    padding: 100px 10% 60px; /* Adds padding around the display area, keeping content centered */
+    display: flex;
+    justify-content: center; /* Center car cards horizontally */
   }
   
   .car-info-card {
-    margin: 1rem;
     border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    padding-top: 100px; /* Padding to push content down since header is fixed */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px; /* Space from the header */
+    width: 100%; /* Full width within container */
+    max-width: 960px; /* Maximum width of the card */
   }
   
   .car-info-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Deeper shadow for hover effect */
   }
   
   .car-image {
-    max-width: 100%;
-    display: block;
+    width: 100%; /* Ensure image takes full width of the card */
+    height: auto; /* Maintain aspect ratio */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px; /* Round the top corners of the image */
   }
   
   .car-details {
-    padding: 1rem;
-    text-align: center;
+    padding: 20px; /* Spacing inside the card */
+    text-align: center; /* Center the text inside the card */
   }
   
   .car-specs {
     list-style: none;
     padding: 0;
-    margin-bottom: 1rem;
+    margin: 20px 0; /* Vertical spacing for the specs list */
+    text-align: left; /* Align text to the left */
   }
   
   .spec-label {
     font-weight: bold;
+    color: #333; /* Dark grey for better readability */
   }
   
   .select-button {
     padding: 10px 20px;
-    background-color: #FF8C00;
+    background-color: #FE8400; /* Bright blue for the button */
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px; /* Rounded corners for the button */
     cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block; /* Make sure button doesn't stretch */
+    margin-top: 10px;
   }
   
   .select-button:hover {
-    background-color: #e67600;
+    background-color: #e67600; /* Darken the button color on hover */
   }
   
 /* Footer Styles */

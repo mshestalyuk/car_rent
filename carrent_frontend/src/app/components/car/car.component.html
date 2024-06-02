@@ -27,7 +27,7 @@
                   <li><span class="spec-label">Luggage Capacity:</span> {{ car.luggageCapacity }}</li>
               </ul>
               <!-- Book Button -->
-            <button class="select-button" (click)="bookCar(car.id!)">Book This Car</button>
+              <button *ngIf="isLoggedIn" class="select-button" (click)="bookCar(car.id!)">Book This Car</button>
 
           </div>
       </div>
