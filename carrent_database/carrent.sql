@@ -93,11 +93,17 @@ CREATE TABLE public.bookings (
 
 -- Insert example data into each table
 -- Inserting data into 'car'
-INSERT INTO public.car (fuel, transmission, consumption, seats, luggage_capacity, image, model, price)
-VALUES
-('Petrol', 'Automatic', '30mpg', 5, '2 large suitcases', 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Sedan', 30.00),
-('Diesel', 'Manual', '45mpg', 5, '3 large suitcases', 'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'SUV', 50.00),
-('Electric', 'Automatic', '120mpge', 4, '1 large suitcase', 'https://images.pexels.com/photos/244206/pexels-photo-244206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Compact', 40.00);
+INSERT INTO public.car (fuel, transmission, consumption, seats, luggage_capacity, image, model, price) VALUES
+('Hybrid', 'Automatic', '50mpg', 4, '2 small suitcases', 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Coupe', 45.00),
+('Electric', 'Automatic', '200mpge', 2, '1 small suitcase', 'https://images.pexels.com/photos/244206/pexels-photo-244206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Sports', 70.00),
+('Petrol', 'Manual', '35mpg', 7, '3 large suitcases', 'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Minivan', 55.00),
+('Diesel', 'Automatic', '40mpg', 5, '2 medium suitcases', 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Sedan', 50.00),
+('Electric', 'Automatic', '150mpge', 5, '1 large suitcase', 'https://images.pexels.com/photos/244206/pexels-photo-244206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'SUV', 85.00),
+('Hybrid', 'Manual', '60mpg', 5, '3 small suitcases', 'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Hatchback', 40.00),
+('Petrol', 'Automatic', '28mpg', 4, '2 medium suitcases', 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Convertible', 60.00),
+('Diesel', 'Manual', '43mpg', 5, '4 large suitcases', 'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Station Wagon', 65.00),
+('Electric', 'Automatic', '100mpge', 2, '1 small suitcase', 'https://images.pexels.com/photos/244206/pexels-photo-244206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Roadster', 75.00),
+('Hybrid', 'Automatic', '55mpg', 5, '2 large suitcases', 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Crossover', 65.00);
 
 -- Inserting data into 'role'
 INSERT INTO public.role (rolename)
@@ -107,23 +113,41 @@ VALUES
 
 -- Inserting data into 'user'
 INSERT INTO public."user" (email, password, role_id) VALUES
-('user1@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1),
-('user2@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1),
-('user3@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1);
-
+('user1@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 2),
+('user2@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 2),
+('user3@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 2),
+('user4@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1),
+('user5@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1),
+('user6@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1),
+('user7@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1),
+('user8@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1),
+('user9@example.com', '$2a$10$2fNAAmXvjeqTlwxYO.ilbebST7nBB21X/x2sRPZFAhazdn3vgDTuu', 1);
 -- Inserting data into 'location'
 INSERT INTO public.location (address, postal_code, city, county)
 VALUES
 ('123 Street Ave', 10001, 'New York', 'NY'),
 ('456 Boulevard St', 20002, 'Washington', 'DC'),
+('789 Road Ln', 30003, 'Atlanta', 'GA'),
+('123 Street Ave', 10001, 'New York', 'NY'),
+('456 Boulevard St', 20002, 'Washington', 'DC'),
+('789 Road Ln', 30003, 'Atlanta', 'GA'),
+('123 Street Ave', 10001, 'New York', 'NY'),
+('456 Boulevard St', 20002, 'Washington', 'DC'),
 ('789 Road Ln', 30003, 'Atlanta', 'GA');
-
 -- Inserting data into 'driver_license'
 INSERT INTO public.driver_license (license_number, start_date, expiration_date, image)
 VALUES
 (1234567890, '2020-01-01', '2030-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
 (2345678901, '2021-01-01', '2031-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
+(3456789012, '2022-01-01', '2032-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
+(1234567890, '2020-01-01', '2030-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
+(2345678901, '2021-01-01', '2031-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
+(3456789012, '2022-01-01', '2032-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
+(1234567890, '2020-01-01', '2030-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
+(2345678901, '2021-01-01', '2031-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg'),
 (3456789012, '2022-01-01', '2032-01-01', 'https://upload.wikimedia.org/wikipedia/commons/7/79/Californian_sample_driver%27s_license%2C_c._2019.jpg');
+
+
 
 
 -- Inserting data into 'user_details'
@@ -131,8 +155,13 @@ INSERT INTO public.user_details (user_id, id_driver, name, surname, location, im
 VALUES
 (1, 1, 'John', 'Doe', '123 Street Ave', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
 (2, 2, 'Jane', 'Doe', '456 Boulevard St', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
-(3, 3, 'Jim', 'Beam', '789 Road Ln', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg');
-
+(3, 3, 'Jim', 'Beam', '789 Road Ln', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
+(4, 4, 'John', 'Doe', '123 Street Ave', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
+(5, 5, 'Jane', 'Doe', '456 Boulevard St', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
+(6, 6, 'John', 'Doe', '123 Street Ave', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
+(7, 7, 'Jane', 'Doe', '456 Boulevard St', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
+(8, 8, 'Jim', 'Beam', '789 Road Ln', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg'),
+(9, 9, 'Jim', 'Beam', '789 Road Ln', 'https://www2.deloitte.com/content/dam/Deloitte/nl/Images/promo_images/deloitte-nl-cm-digital-human-promo.jpg');
 -- Inserting data into 'bookings'
 INSERT INTO public.bookings (user_id, car_id, pick_up_loc_id, drop_off_loc_id, pick_up_date, pick_off_date, status, drop_off_date)
 VALUES
