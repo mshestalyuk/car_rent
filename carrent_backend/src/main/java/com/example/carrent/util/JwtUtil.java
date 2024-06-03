@@ -25,16 +25,18 @@ public class JwtUtil {
 
     public String generateToken(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        User user = ((CustomUserDetails) userDetails).getUser(); // Assuming you have extended UserDetails to include the User entity.
-    
+        User user = ((CustomUserDetails) userDetails).getUser(); // Assuming CustomUserDetails wraps the User entity.
+        
         return Jwts.builder()
             .setSubject(userDetails.getUsername())
             .claim("userId", user.getId()) // Include user ID in the claims.
+            .claim("roleId", user.getRole()) // Include role ID in the claims.
             .setIssuedAt(new Date())
             .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 hours validity
             .signWith(secretKey)
             .compact();
     }
+    
     
 
     public boolean validateToken(String token, String username) {

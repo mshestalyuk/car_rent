@@ -168,3 +168,15 @@
     margin-bottom: 20px;
 }
 
+.profile-card button {
+    background-color: #4CAF50; /* Green background for visibility */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.profile-card button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

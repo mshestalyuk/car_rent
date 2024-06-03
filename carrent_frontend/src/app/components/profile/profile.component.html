@@ -30,7 +30,10 @@
             </div>
             <h1>{{ userDetails.name }} {{ userDetails.surname }}</h1>
             <p>Location: {{ userDetails.location }}</p>
-        </div>
+            <p>Role Name: {{ roleInfo.name }}</p>
+            <button *ngIf="roleInfo.name === 'Admin'" (click)="navigateToAdmin()">Admin Panel</button>
+
+            </div>
         
         <div class="driver-license-container" *ngIf="license">
             <h2>Driver License</h2>

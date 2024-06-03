@@ -1,0 +1,108 @@
+.admin-container {
+    margin: 80px 20px 20px; /* Adjusted top margin to account for fixed header */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9; /* Soft background for the container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+h1 {
+    color: #4A4A4A; /* Softer tone of black */
+    text-align: center; /* Center-align the heading */
+    margin-bottom: 20px; /* Added bottom margin for spacing */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white; /* Background for the table */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Shadow for the table */
+}
+
+th, td {
+    border: 1px solid #e1e1e1; /* Lighter border color */
+    padding: 12px 15px; /* More padding for better spacing */
+    text-align: left;
+}
+
+th {
+    background-color: #605CA8; /* Darker shade for headers */
+    color: white; /* White text color for headers */
+    font-size: 16px; /* Slightly larger font size for headers */
+}
+
+td {
+    font-size: 14px; /* Slightly larger font size for content */
+    color: #333; /* Darker font color for better readability */
+}
+
+button {
+    margin-right: 10px;
+    padding: 8px 16px; /* Larger padding for a better touch area */
+    background-color: #5CB85C; /* More vibrant green */
+    color: white;
+    border-radius: 4px; /* Slightly reduced border-radius */
+    font-size: 14px; /* Larger font size */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #4CAE4C; /* Darker shade on hover */
+}
+
+/* Added styles for a cleaner and more professional look */
+table tr:nth-child(odd) {
+    background-color: #f7f7f7; /* Zebra striping for rows */
+}
+
+table tr:hover {
+    background-color: #eef1f8; /* Hover effect for rows */
+}
+
+  
+  header {
+    background-color: #141414; /* Header background color */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;
+  }
+  
+  header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  header nav ul li {
+    padding: 10px 20px;
+  }
+  
+  header nav ul li a,
+  header nav button {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  header nav button {
+    background-color: #FE8400;
+    padding: 10px 20px;
+  }
+  
+  header nav button:hover {
+    background-color: #e67600;
+  }

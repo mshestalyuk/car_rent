@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { BookingComponent } from './components/booking/booking.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CarComponent } from './components/car/car.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,6 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
-
   },
   {
     path: 'booking',
@@ -34,6 +34,12 @@ const routes: Routes = [
   {
     path: 'car/:id',
     component: CarComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminPageComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [2] }
   },
   {
     path: '', redirectTo: 'home', pathMatch: 'full'

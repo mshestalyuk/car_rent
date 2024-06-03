@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   user: User | undefined;  // Use the License interface
 
   creatingLicense: boolean = false;  // Track if creating a new license
+  roleInfo: { id: number | null, name: string | null } = { id: null, name: null };
 
   constructor(
     private router: Router,
@@ -39,6 +40,7 @@ export class ProfileComponent implements OnInit {
     this.loadUserLicense();
     this.loadUserProfile();
     this.loadUser();
+    this.roleInfo = this.authService.getRoleFromToken();
 
   }
 
@@ -120,7 +122,9 @@ export class ProfileComponent implements OnInit {
     }
   }
   
-  
+  navigateToAdmin() {
+    this.router.navigate(['/admin']); // Make sure the path matches your routing configuration
+  }
   // createLicense(inputData: License): void {
   //   // Assume LicenseInput is the correct interface for posting new license data
   //   this.licenseService.createLicense(inputData).subscribe({

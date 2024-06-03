@@ -1,1 +1,40 @@
-<p>admin-page works!</p>
+
+<header>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/">HOME</a></li>
+            <li><a href="booking">BOOKINGS</a></li>
+            <li><a href="profile">PROFILE</a></li>
+            <li>            
+              <button (click)="logInOrOut()">
+                  {{ isLoggedIn ? 'LOG OUT' : 'LOGIN | SIGN UP' }}
+              </button>
+          </li>
+        </ul>
+    </nav>
+</header>
+<div class="admin-container">
+    <h1>Admin Dashboard</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ROLE_ID</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.roleId }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button (click)="editUser(user)">Edit</button>
+            <button (click)="deleteUser(user.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

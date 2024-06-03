@@ -59,7 +59,36 @@ export class AuthService {
     return 0; // Return a default or error value if no token or incorrect claim
   }
 
+  getRoleFromToken(): { id: number | null, name: string | null } {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decoded: any = jwtDecode(token);
+        const id = decoded.roleId ? +decoded.roleId.idRole : null;
+        const name = decoded.roleId ? decoded.roleId.roleName : null;
+        return { id, name };
+      } catch (Error) {
+        console.error('Failed to decode token:', Error);
+        return { id: null, name: null };
+      }
+    }
+    return { id: null, name: null };
+  }
   
+  getRoleIdFromToken(): number | null {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decoded: any = jwtDecode(token);
+        return decoded.roleId ? +decoded.roleId.idRole : null;
+      } catch (Error) {
+        console.error('Failed to decode token:', Error);
+        return null;
+      }
+    }
+    return null;
+  }
+
   logOut(): void {
     localStorage.removeItem('token');  // Removing the JWT token from local storage
   }
