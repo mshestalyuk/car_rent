@@ -13,6 +13,8 @@ services:
       POSTGRES_DB: carrent
     ports:
       - "5432:5432"
+    networks:
+      - carrent_network
 
   backend:
     build:
@@ -29,6 +31,8 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     ports:
       - "8080:8080"
+    networks:
+      - carrent_network
 
   frontend:
     build:
@@ -38,3 +42,9 @@ services:
     container_name: carrent_frontend
     ports:
       - "4200:4200"
+    networks:
+      - carrent_network
+
+networks:
+  carrent_network:
+    driver: bridge

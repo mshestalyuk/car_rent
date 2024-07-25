@@ -1,12 +1,12 @@
 package com.example.carrent.service;
 
 import com.example.carrent.dto.UserDTO;
-import com.example.carrent.model.User;
 import com.example.carrent.model.Role;
-import com.example.carrent.repository.UserRepository;
+import com.example.carrent.model.User;
 import com.example.carrent.repository.RoleRepository;
+import com.example.carrent.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +17,13 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<UserDTO> findAllUsers() {
@@ -42,7 +42,7 @@ public class UserService {
         if (user.getRole() == null) {
             roleRepository.findById(1L).ifPresent(user::setRole);
         }
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); // Encrypt password
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Encrypt password
         User savedUser = userRepository.save(user);
         return convertToDto(savedUser);
     }
@@ -55,7 +55,7 @@ public class UserService {
             .map(user -> {
                 user.setEmail(userDTO.getEmail());
                 if (userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()) {
-                    user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
+                    user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
                 }
                 // Only update the role if a new roleId is provided
                 if (userDTO.getRoleId() != null) {
@@ -68,8 +68,6 @@ public class UserService {
             .orElse(null);
     }
     
-    
-
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }

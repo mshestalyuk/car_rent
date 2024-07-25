@@ -29,7 +29,9 @@ import com.example.carrent.service.security.JwtAuthenticationFilter;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private JwtAuthenticationFilter jwtAuthenticationFilter;
+    public SecurityConfig() {
+
+        }
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
@@ -52,30 +54,29 @@ public class SecurityConfig {
         return daoAuthenticationProvider;
     }
 
-@Bean
-public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http
-        .cors().configurationSource(corsConfigurationSource())
-        .and()
-        .csrf().disable()
-        .authorizeRequests()
-        .requestMatchers(HttpMethod.OPTIONS).permitAll()
-        .anyRequest().permitAll()
-        .and()
-        .httpBasic().disable() 
-        .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .cors().configurationSource(corsConfigurationSource())
+            .and()
+            .csrf().disable()
+            .authorizeRequests()
+            .requestMatchers(HttpMethod.OPTIONS).permitAll()
+            .anyRequest().permitAll()
+            .and()
+            .httpBasic().disable()
+            .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-    return http.build();
-}
+        return http.build();
+    }
 
-    
-        @Bean
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-        @Bean
+    @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:4200", "http://127.0.0.1:4200"));
